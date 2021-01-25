@@ -1,22 +1,16 @@
-var path = require("path");
-var HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
+const base = require("./webpack.config.base.js");
 
 module.exports = {
+  ...base,
+  mode: "development",
   devtool: "inline-source-map",
   devServer: {
     contentBase: "./dist",
   },
-  mode: "production",
-  entry: "./src/index.js",
-  output: {
-    filename: "index.[contenthash].js",
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: "小丽",
-      template: "src/assets/index.html",
-    }),
-  ],
   module: {
     rules: [
       {
